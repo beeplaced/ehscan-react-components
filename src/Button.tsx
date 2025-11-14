@@ -1,6 +1,5 @@
 import { useRef, useCallback, ReactNode } from "react";
-import useRipple from "../tools/useRipple";
-import '../style/button.css';
+import useRipple from "./tools/useRipple";
 
 type Props = {
   index?: string | number;
@@ -13,20 +12,20 @@ type Props = {
   children?: ReactNode; //icon
 };
 
-const ExtButton: React.FC<Props> = ({ index, text, selected, addClass, notimeout, size = 'md', click, children }) => {
+export const Button: React.FC<Props> = ({ index, text, selected, addClass, notimeout, size = 'md', click, children }) => {
 
   const buttonRef = useRef(null);
   const handleRipple = useRipple();
 
   const handleButtonClick = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
-      handleRipple(event, buttonRef);
+      handleRipple(event, buttonRef as unknown as React.RefObject<HTMLElement>);
 
       if (notimeout) {
         click?.(event);
         return;
       }
-
+      
       setTimeout(() => {
         click?.(event);
       }, 200);
@@ -47,5 +46,3 @@ const ExtButton: React.FC<Props> = ({ index, text, selected, addClass, notimeout
     </button>
   </>)
 }
-
-export default ExtButton

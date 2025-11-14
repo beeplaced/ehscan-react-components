@@ -1,36 +1,35 @@
 {
   "name": "ehscan-react-components",
-  "private": true,
-  "version": "0.0.1",
-  "type": "module",
+  "version": "0.1.6",
+  "description": "components",
+  "main": "dist/Components.js",
+  "types": "dist/Components.d.ts",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build": "tsc && npm run copy-css",
+    "copy-css": "cp -r src/style dist/style",
+    "prepublishOnly": "npm run build"
   },
-  "dependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+  "keywords": [
+    "react",
+    "state",
+    "global-state",
+    "store",
+    "minimal"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.3.1"
   },
-  "author": "beeplaced",
-  "license": "unlicense",
   "files": [
-    "dist",
-    "README.md"
+    "dist"
   ],
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
-    "@types/node": "^24.10.0",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
-    "@vitejs/plugin-react": "^5.1.0",
-    "eslint": "^9.39.1",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "globals": "^16.5.0",
-    "typescript": "~5.9.3",
-    "typescript-eslint": "^8.46.3",
-    "vite": "^7.2.2"
+    "@types/glob": "8",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "glob": "8",
+    "minimatch": "5",
+    "typescript": "^5.6.3"
   }
 }
