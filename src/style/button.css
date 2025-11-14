@@ -1,0 +1,250 @@
+/* EHSCAN Base Button */
+
+button {
+    /* Button default variables */
+    --btn-bg: #007aff;
+    --btn-color: #fff;
+    --btn-radius: 18px;
+    --btn-padding-y: 0.5rem;
+    --btn-padding-x: 1rem;
+    --btn-width: fit-content;
+    --btn-height: auto;
+    --btn-font-size: 1rem;
+    --btn-font-weight: 500;
+    --btn-transition: all 0.2s ease;
+    --btn-line-height: 1.5;
+    --ripple-box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    --ripple-effect-bck: rgb(0 0 0 / 15%);
+}
+
+.ext-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: inherit;
+  font-size: var(--btn-font-size);
+  font-weight: var(--btn-font-weight);
+  color: var(--btn-color);
+  background-color: var(--btn-bg);
+  border: none;
+  border-radius: var(--btn-radius);
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  width: var(--btn-width);
+  height: var(--btn-height);
+  cursor: pointer;
+  transition: var(--btn-transition);
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+}
+
+._ripple {
+  line-height: var(--btn-line-height);
+  font-weight: var(--btn-font-weight);
+  box-shadow: var(--ripple-box-shadow);
+  position: relative;
+  overflow: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🧭 Focus */
+.ext-btn:focus-visible {
+  outline: 2px solid #007aff;
+  outline-offset: 2px;
+}
+
+/* 🚫 Disabled */
+.ext-btn:disabled,
+.ext-btn[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Hover — slightly darker */
+.ext-btn:hover:not(:disabled):not([aria-disabled="true"]) {
+  filter: brightness(0.9); /* 10% darker */
+}
+
+/* 🖱️ Hover + Active */
+/* .ext-btn:hover:not(:disabled):not([aria-disabled="true"]) {
+  filter: brightness(1.1);
+} */
+
+.ext-btn:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: scale(0.97);
+}
+
+/* 🧩 Sizes */
+.ext-btn--sm {
+  --btn-padding-y: 0.25rem;
+  --btn-padding-x: 0.75rem;
+  --btn-font-size: 0.85rem;
+}
+
+.ext-btn--md {
+  --btn-padding-y: 0.5rem;
+  --btn-padding-x: 1rem;
+  --btn-font-size: 1rem;
+}
+
+.ext-btn--lg {
+  --btn-padding-y: 0.75rem;
+  --btn-padding-x: 1.5rem;
+  --btn-font-size: 1.1rem;
+}
+
+/* 🎨 Variants */
+.ext-btn--primary {
+  --btn-bg: #007aff;
+  --btn-color: #fff;
+}
+
+.ext-btn--secondary {
+  --btn-bg: #e5e5ea;
+  --btn-color: #111;
+}
+
+.ext-btn--outline {
+  --btn-bg: transparent;
+  --btn-color: #007aff;
+}
+
+.ext-btn--ghost {
+  --btn-bg: transparent;
+  --btn-color: #007aff;
+}
+
+.ext-btn--danger {
+  --btn-bg: #ff3b30;
+  --btn-color: #fff;
+}
+
+/* 🌀 Loading (optional if using spinner) */
+.ext-btn--loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* 📦 Content Layout */
+.ext-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1em;
+}
+
+.ext-btn-label {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* RIPPLE EFFECT */
+.ripple {
+  background: var(--ripple-effect-bck);
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+/* Only devices that can hover (desktop/laptop) */
+@media (hover: hover) and (pointer: fine) {
+  ._ripple {
+    cursor: pointer;
+  }
+}
+
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.lds-ripple,
+.lds-ripple div {
+  box-sizing: border-box;
+}
+
+.lds-ripple {
+  --image-sync-wh: 100%;
+  --bw: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: var(--image-sync-wh);
+  width: var(--image-sync-wh);
+  z-index: 9999;
+}
+
+.lds-ripple div {
+  position: absolute;
+  border: var(--bw) solid white;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.4, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+  border: var(--bw) solid whitesmoke;
+}
+
+@keyframes lds-ripple {
+  0% {
+    top: 50%;
+    left: 50%;
+    width: 8%;
+    height: 8%;
+    opacity: .2;
+    transform: translate(-50%, -50%);
+  }
+
+  5% {
+    top: 50%;
+    left: 50%;
+    width: 8%;
+    height: 8%;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  100% {
+    top: 50%;
+    left: 50%;
+    width: var(--image-sync-wh);
+    height: var(--image-sync-wh);
+    opacity: .2;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.closeBtn{
+  --btn-width: 35px;
+  --btn-height: 35px;
+  padding: 0;
+  --btn-bg: lightgray;
+}
+
+.saveBtn{
+  --btn-height: 35px;
+  --btn-padding-x: 30px;
+  --btn-bg: #007aff;
+}
+
+.trashBtn{
+    --btn-height: 35px;
+  --btn-padding-x: 10px;
+     --btn-radius: 4px;
+  --btn-bg: lightgray;
+}
