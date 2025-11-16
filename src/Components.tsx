@@ -3,3 +3,4 @@
 // }
 
 export { Button } from './Button';
+export { Window } from './Window';

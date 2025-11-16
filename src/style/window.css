@@ -1,0 +1,95 @@
+/* 🪟 ExtWindow Base */
+.ext-window {
+  /* --ext-window-bck-color: white;
+  --ext-window-border-radius: 12px;
+  --ext-window-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  --ext-window-opacity: 0;
+  --ext-window-transition: opacity 0.4s ease-in-out;
+  --ext-window-width: 400px;
+  --ext-window-min-height: 300px; */
+
+  background-color: var(--ext-window-bck-color, white);
+  position: absolute;
+  width: var(--ext-window-width, 400px);
+  min-height: var(--ext-window-min-height, 300px);
+  border-radius: var(--ext-window-border-radius, 12px);
+  box-shadow: var(--ext-window-shadow);
+  opacity: var(--ext-window-opacity, 0);
+  transition: var(--ext-window-transition);
+}
+
+.ext-window.fadein {
+  opacity: 1;
+}
+
+/* Header */
+.ext-window-header {
+  --ext-window-header-bck-color: var(--ext-window-bck-color, white);
+  padding: 0 10px;
+  border-radius: var(--ext-window-border-radius, 12px) var(--ext-window-border-radius, 12px) 0 0;
+  background-color: var(--ext-window-header-bck-color);
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  display: flex;
+  user-select: none;
+  gap: 10px;
+}
+
+.ext-window-header-title {
+  flex: 1;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  padding: 5px 0 2px 0;
+  cursor: move;
+}
+
+.ext-window-header-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--ext-window-close-bck, aqua);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--ext-window-border-radius, 12px);
+  cursor: pointer;
+}
+
+/* Body */
+.ext-window-body {
+  background-color: var(--ext-window-body-bck, transparent);
+  min-height: var(--ext-window-min-height, 300px);
+  overflow: auto;
+  user-select: none;
+}
+
+._ewb::-webkit-scrollbar {
+  width: 0;
+  background-color: var(--ext-window-bck-color, white);
+}
+
+._ewb:hover::-webkit-scrollbar {
+  width: 6px;
+}
+
+._ewb::-webkit-scrollbar-thumb {
+  background-color: var(--ext-window-scrollbar-thumb, white);
+  border-radius: 12px;
+}
+
+._ewb:hover::-webkit-scrollbar-thumb {
+  background-color: var(--ext-window-scrollbar-thumb-hover, #555);
+}
+
+/* Resize handle */
+.resize-handle {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+  background: var(--ext-window-resize-bck, darkgreen);
+  border-radius: 12px 0 12px 0;
+}
