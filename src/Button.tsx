@@ -1,5 +1,6 @@
 import { useRef, useCallback, ReactNode } from "react";
 import useRipple from "./tools/useRipple";
+import './style/button.css'
 
 type Props = {
   index?: string | number;
@@ -39,7 +40,7 @@ export const Button: React.FC<Props> = ({ index, text, selected, addClass, notim
       type="button"
       ref={buttonRef}
       onClick={handleButtonClick}
-      className={`ext-btn ext-btn--primary ext-btn--${size} _ripple ${addClass ?? ''}`}
+      className={`ext-btn ext-btn--${size} _ripple ${addClass ?? 'ext-btn--primary'}`}
       aria-pressed={selected} >
       {children}
       {text && <div className="ext-btn-label">{text}</div>}

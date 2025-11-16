@@ -1,5 +1,3 @@
-import './style/button.css'
-
 // export const ExtButton = () => {
 //     return <Button />
 // }

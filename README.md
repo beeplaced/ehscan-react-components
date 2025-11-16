@@ -1,79 +1,70 @@
-# mgsmu-react - Minimal Global State Management Utility
+# ehscan-react-components
 
-- mgsmu-react is a lightweight global state management utility for React.  
-- It provides a simple **publish-subscribe (pub-sub)** mechanism to manage global state without external libraries like Redux or Zustand.  
-- Components can subscribe to specific keys and automatically re-render when those keys change.
+# Styling
 
-## install
-```
-npm install --save mgsmu-react
-```
+## Base Button Variables
 
-## Import in any component
+| Variable              | Default/Fallback                          |
+| --------------------- | ----------------------------------------- |
+| `--btn-bg`            | `#007aff`                                 |
+| `--btn-color`         | `#fff`                                    |
+| `--btn-radius`        | `18px`                                    |
+| `--btn-padding-y`     | `0.5rem`                                  |
+| `--btn-padding-x`     | `1rem`                                    |
+| `--btn-width`         | `fit-content`                             |
+| `--btn-height`        | `auto`                                    |
+| `--btn-font-size`     | `1rem`                                    |
+| `--btn-font-weight`   | `500`                                     |
+| `--btn-transition`    | `all 0.2s ease`                           |
+| `--btn-line-height`   | `1.5`                                     |
+| `--ripple-box-shadow` | `rgb(100 100 111 / 20%) 0px 7px 29px 0px` |
+| `--ripple-effect-bck` | `rgb(0 0 0 / 15%)`                        |
 
-```jsx
-import { useStateStore } from 'mgsmu-react';
-```
-- useStateStore() – React hook to access the global state and subscribe to changes.
 
-## Invoke state
-```jsx
-const key = "data";
-const [data, setData, removeData] = useStateStore(key);
-```
-- Parameter names are flexible (data, setData and removeData are just examples).
-- keys can be used as you like. You can create as many keys as you like for different scenarios
+### Size-specific overrides
 
-## Set data and key
+| Variable             | Size | Default/Fallback |
+| -------------------- | ---- | ---------------- |
+| `--btn-padding-y-sm` | sm   | `0.25rem`        |
+| `--btn-padding-x-sm` | sm   | `0.75rem`        |
+| `--btn-font-size-sm` | sm   | `0.85rem`        |
+| `--btn-padding-y-md` | md   | `0.5rem`         |
+| `--btn-padding-x-md` | md   | `1rem`           |
+| `--btn-font-size-md` | md   | `1rem`           |
+| `--btn-padding-y-lg` | lg   | `0.75rem`        |
+| `--btn-padding-x-lg` | lg   | `1.5rem`         |
+| `--btn-font-size-lg` | lg   | `1.1rem`         |
 
-```jsx
-const data = { specifics: "data", state: true, what: "next" };
-setData(data)
+### Variant-specific variables
 
-// Functional Update 1.0.5
-setData(prev => ({ ...prev, added: "new" }));
-```
-- Key: any string can be used ("data", "users", "messages", etc.)
-- Data: any object or array can be stored under that key.
-- Allows management of multiple independent keys in your global state
+| Variable                | Variant   | Default/Fallback |
+| ----------------------- | --------- | ---------------- |
+| `--btn-bg-primary`      | primary   | `#007aff`        |
+| `--btn-color-primary`   | primary   | `#fff`           |
+| `--btn-bg-secondary`    | secondary | `#e5e5ea`        |
+| `--btn-color-secondary` | secondary | `#111`           |
+| `--btn-bg-outline`      | outline   | `transparent`    |
+| `--btn-color-outline`   | outline   | `#007aff`        |
+| `--btn-bg-ghost`        | ghost     | `transparent`    |
+| `--btn-color-ghost`     | ghost     | `#007aff`        |
+| `--btn-bg-danger`       | danger    | `#ff3b30`        |
+| `--btn-color-danger`    | danger    | `#fff`           |
 
-## Listen and catch changes
+### Specific Button Types
 
-```jsx
-useEffect(() => {
-    if (!data) return;
-    console.log(data); //use Data
-  },[data])
-```
+| Variable                | Type     | Default/Fallback |
+| ----------------------- | -------- | ---------------- |
+| `--btn-width-close`     | closeBtn | `35px`           |
+| `--btn-height-close`    | closeBtn | `35px`           |
+| `--btn-bg-close`        | closeBtn | `lightgray`      |
+| `--btn-height-save`     | saveBtn  | `35px`           |
+| `--btn-padding-x-save`  | saveBtn  | `30px`           |
+| `--btn-bg-save`         | saveBtn  | `#007aff`        |
+| `--btn-height-trash`    | trashBtn | `35px`           |
+| `--btn-padding-x-trash` | trashBtn | `10px`           |
+| `--btn-radius-trash`    | trashBtn | `4px`            |
+| `--btn-bg-trash`        | trashBtn | `lightgray`      |
 
-```jsx
-logs: {
-    "specifics": "data",
-    "state": true,
-    "what": "next",
-    "updatedAt": 1757423800721
-}
-```
-- useEffect triggers whenever the specified key (data in this example) changes.
-- Supports multiple keys — you can set up multiple useEffect hooks to listen to different keys individually.
-- Ensures components only re-render when the relevant slice of state updates.
-
-## Remove keys
-
-```jsx
-removeData("data");
-```
-- Deletes a key from the global state.
-- Make sure component is clean if rendered again
-- Note: Triggers re-render for components subscribed to that key.
-
-----
-**Notes**
-
-- Every state update includes an updatedAt timestamp.
-- The store works with any object structure, making it flexible for various use cases.
-- Lightweight and minimal — no context providers or extra boilerplate required.
-- Ideal for managing small to medium app state where a full state library would be overkill.
 
 ----
 # Changelog
