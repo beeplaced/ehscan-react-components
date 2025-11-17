@@ -11,9 +11,10 @@ interface Props {
   onChange: (value: string) => void;
   placeholder?: string;
   maxLength?: number;
+  addClass?: string;
 }
 
-export const TextArea: React.FC<Props> = ({ id, tabIndex, label, value, editable = true, required = false, onChange, placeholder, maxLength = 500 }) => {
+export const TextArea: React.FC<Props> = ({ id, tabIndex, label, value, editable = true, required = false, onChange, placeholder, maxLength = 500, addClass }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [charCount, setCharCount] = useState(value.length);
   const generatedId = useId(); // unique fallback for aria linking
@@ -60,7 +61,7 @@ export const TextArea: React.FC<Props> = ({ id, tabIndex, label, value, editable
   }, [onChange]);
 
   return (
-    <div className="ext-textarea-wrapper">
+    <div className={`ext-textarea-wrapper ${addClass}`}>
       {/* Label Area */}
       {label && (
         <div className="ext-textarea-label">
