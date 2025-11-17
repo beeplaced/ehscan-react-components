@@ -13,17 +13,7 @@ interface Props {
   maxLength?: number;
 }
 
-export const TextArea: React.FC<Props> = ({
-  id,
-  tabIndex,
-  label,
-  value,
-  editable = true,
-  required = false,
-  onChange,
-  placeholder,
-  maxLength = 500,
-}) => {
+export const TextArea: React.FC<Props> = ({ id, tabIndex, label, value, editable = true, required = false, onChange, placeholder, maxLength = 500 }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [charCount, setCharCount] = useState(value.length);
   const generatedId = useId(); // unique fallback for aria linking
@@ -74,13 +64,9 @@ export const TextArea: React.FC<Props> = ({
       {/* Label Area */}
       {label && (
         <div className="ext-textarea-label">
-          <label
-            className="ext-textarea-label-title"
-            htmlFor={textareaId}
-          >
+          <label className="ext-textarea-label-title" htmlFor={textareaId}>
             {label} {required && <span className="required">*</span>}
           </label>
-
           <div className="ext-textarea-label-btns">
             {editable && charCount > 0 && (
               <div className="form-container-count">
@@ -88,14 +74,12 @@ export const TextArea: React.FC<Props> = ({
               </div>
             )}
             {editable && charCount > 0 && (
-              <button
-                type="button"
-                className="form-container-clear"
-                onClick={clear}
-                aria-label={`Clear ${label ?? "text area"}`}
-              >
-                clear
-              </button>
+              <div className="ext-textarea-svg-close" onClick={clear} aria-label={`Clear ${label ?? "text area"}`}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                  <line x1="8" y1="8" x2="16" y2="16" stroke="#333" strokeWidth="2" strokeLinecap="round" />
+                  <line x1="16" y1="8" x2="8" y2="16" stroke="#333" strokeWidth="2" strokeLinecap="round" />
+                </svg>
+              </div>
             )}
           </div>
         </div>

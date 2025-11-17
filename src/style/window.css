@@ -25,9 +25,10 @@
 /* Header */
 .ext-window-header {
   border-radius: var(--ext-window-border-radius, 12px) var(--ext-window-border-radius, 12px) 0 0;
-  background-color: var(--ext-window-header-bck-color, white);
+  background-color: var(--ext-window-header-bck-color, transparent);
   height: var(--ext-window-header-height, 50px);
   cursor: pointer;
+  display: flex;
 }
 
 /* Body */
@@ -41,6 +42,7 @@
 .ext-window-footer {
   background-color: var(--ext-window-footer-bck, transparent);
   height: var(--ext-window-footer-height, 50px);
+  border-radius: 0 0 var(--ext-window-border-radius, 12px) var(--ext-window-border-radius, 12px);
 }
 
 /* Scrollbars for WebKit */
