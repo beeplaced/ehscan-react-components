@@ -1,5 +1,9 @@
 # ehscan-react-components
 
+- Button
+- Window
+- TextArea
+
 # Styling
 
 ## Base Button Variables
@@ -65,6 +69,27 @@
 | `--btn-radius-trash`    | trashBtn | `4px`            |
 | `--btn-bg-trash`        | trashBtn | `lightgray`      |
 
+# Window
+
+## styling
+
+| Variable                             | Default                       | Description                        |
+| ------------------------------------ | ----------------------------- | ---------------------------------- |
+| `--ext-window-bck-color`             | `white`                       | Window background color            |
+| `--ext-window-width`                 | `400px`                       | Window default width               |
+| `--ext-window-min-height`            | `300px`                       | Window minimum height              |
+| `--ext-window-border-radius`         | `12px`                        | Window border radius               |
+| `--ext-window-shadow`                | `rgba(50,50,93,0.25) ...`   | Box shadow for window              |
+| `--ext-window-opacity`               | `0`                           | Initial opacity (used for fade-in) |
+| `--ext-window-transition`            | `opacity 0.4s ease-in-out`    | Fade transition                    |
+| `--ext-window-header-bck-color`      | `var(--ext-window-bck-color)` | Header background color            |
+| `--ext-window-close-bck`             | `aqua`                        | Close button background            |
+| `--ext-window-body-bck`              | `transparent`                 | Body background color              |
+| `--ext-window-footer-bck`            | `transparent`                 | Footer background color            |
+| `--ext-window-footer-min-height`     | `50px`                        | Footer min height                  |
+| `--ext-window-scrollbar-thumb`       | `white`                       | Scrollbar thumb color              |
+| `--ext-window-scrollbar-thumb-hover` | `#555`                        | Scrollbar thumb color on hover     |
+| `--ext-window-resize-bck`            | `darkgreen`                   | Resize handle background           |
 
 ----
 # Changelog
