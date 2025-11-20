@@ -15,7 +15,8 @@ AddBox is a React component for managing a list of entries. It allows users to a
 
 The component is fully controlled — the parent manages the state and receives updates via the onChange callback.
 
-![AddBox Example](./src/images/AddBox.png)
+![AddBox Preview](https://raw.githubusercontent.com/beeplaced/ehscan-react-components/main/src/images/AddBox.png)
+
 
 ### Implementation
 
