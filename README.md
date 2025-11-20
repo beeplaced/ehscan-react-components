@@ -15,45 +15,76 @@ AddBox is a React component for managing a list of entries. It allows users to a
 
 The component is fully controlled — the parent manages the state and receives updates via the onChange callback.
 
-
-
+![AddBox Example](./src/images/AddBox.png)
 
 ### Implementation
 
-```tsx
-    import { useEffect, useState } from "react";
-    import { AddBox, useChangeAddBox } from "ehscan-react-components";
+```jsx
+import { useEffect, useState } from "react";
+import { AddBox, useChangeAddBox } from 'ehscan-react-components';
 
-    const Elements = () => {
+const Elements = () => {
 
     const [inValue, setInValue] = useState({
-        add: [
-        { id: 0, title: "first Entry" },
-        { id: 1, title: "second Entry" },
-        { id: 2, title: "last Entry" }
-        ]
-    });
+    add: [
+      { id: 0, title: "first Entry" },
+      { id: 1, title: "second Entry" },
+      { id: 2, title: "last Entry" }
+    ]
+  });
 
-    // Log changes whenever entries are updated
-    useEffect(() => {
-        console.log(inValue); 
-    }, [inValue]);
+  useEffect(() => {
+    console.log(inValue); //use ValueChanges on save
+  },[inValue])
 
-    // Scoped change function for the "add" key
-    const changeAddBox = useChangeAddBox(inValue, setInValue, "add");
+  const changeAddBox = useChangeAddBox(inValue, setInValue, "add"); //change on specific tag
 
-    return (
-        <div className="element-wrapper">
-        <AddBox 
-            value={inValue.add} 
-            onChange={(value, id) => changeAddBox(value, id)} 
-        />
-        </div>
-    );
-    }
+  return (
+    <>
+      <div className="element-wrapper"> {/* ✏️ Put custom styling overrides here */}
+      <AddBox title="Element-Title" value={inValue.add} onChange={(value, id) => changeAddBox(value, id)} />
+      </div>
+    </>
+  );
+}
 
-    export default Elements;
+export default Elements;
 ```
+
+### Styling
+
+CSS Variables for AddBox
+
+| Variable                                        | Default               | Applies To / Description                       |
+| ----------------------------------------------- | --------------------- | ---------------------------------------------- |
+| `--ext-add-inputbox-border-radius`              | `10px`                | Border radius of the outer AddBox container    |
+| `--ext-add-inputbox-border`                     | `2px solid white`     | Border of the AddBox container                 |
+| `--ext-add-inputbox-title-top`                  | `-15px`               | Top position of the title row                  |
+| `--ext-add-inputbox-plus-svg-stroke`            | `white`               | Stroke color of the “plus” SVG lines           |
+| `--ext-add-inputbox-plus-svg-strokeWidth`       | `3`                   | Stroke width of the “plus” SVG lines           |
+| `--ext-add-inputbox-plus-bck-clr`               | `lightblue`           | Background color of the plus-wrapper container |
+| `--ext-add-inputbox-plus-padding`               | `7px`                 | Horizontal padding inside plus-wrapper         |
+| `--ext-add-inputbox-title-plus-margin-right`    | `15px`                | Margin-right of the plus wrapper               |
+| `--ext-add-inputbox-title-plus-bck-clr`         | `transparent`         | Background color of the plus button            |
+| `--ext-add-inputbox-title-plus-border-radius`   | `50px`                | Border radius of the plus button               |
+| `--ext-add-inputbox-title-plus-h`               | `25px`                | Height of the plus button                      |
+| `--ext-add-inputbox-title-plus-w`               | `25px`                | Width of the plus button                       |
+| `--ext-add-inputbox-title-plus-border`          | `2px solid white`     | Border of the plus button                      |
+| `--ext-add-inputbox-title-plus-bck-clr-hvr`     | `lightgray`           | Background color of plus button on hover       |
+| `--ext-add-inputbox-txt-margin-left`            | `10px`                | Margin-left of the title text                  |
+| `--ext-add-inputbox-txt-bck-clr`                | `lightblue`           | Background color of the title text             |
+| `--ext-add-inputbox-txt-clr`                    | `black`               | Text color of the title text                   |
+| `--ext-add-inputbox-txt-plus-h`                 | `20px`                | Height of the title text container             |
+| `--ext-add-inputbox-body-padding`               | `20px 10px 10px 10px` | Padding for the AddBox body                    |
+| `--ext-add-content-row-height`                  | `30px`                | Height of each row in the AddBox               |
+| `--ext-add-content-row-bck-clr`                 | `white`               | Background color of each row                   |
+| `--ext-add-content-row-border-radius`           | `50px`                | Border radius of each row                      |
+| `--ext-add-content-row-hover-bck-clr`           | `whitesmoke`          | Background color of row on hover               |
+| `--tag-erase-w`                                 | `25px`                | Width of the row delete button                 |
+| `--tag-erase-h`                                 | `25px`                | Height of the row delete button                |
+| `--ext-addbox-textarea-tag-erase-hover-bck-clr` | `darkgray`            | Background color of the delete button on hover |
+| `--ext-addbox-input-focus-border`               | `1px dashed darkgrey` | Border of the input on focus                   |
+
 
 
 # Styling

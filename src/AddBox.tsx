@@ -7,11 +7,12 @@ interface Entry {
 }
 
 interface Props {
+  title: string;
   value: Entry[];
   onChange: (value: string | Entry[], id?: number) => void;
 }
 
-export const AddBox: React.FC<Props> = ({ value, onChange }) => {
+export const AddBox: React.FC<Props> = ({ title, value, onChange }) => {
   const closeBtn = () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <line x1="8" y1="8" x2="16" y2="16" stroke="#333" strokeWidth="1" strokeLinecap="round" />
@@ -53,7 +54,7 @@ export const AddBox: React.FC<Props> = ({ value, onChange }) => {
   return (
     <div className="ext-add-inputbox">
       <div className="ext-add-inputbox-title">
-        <div className="ext-add-inputbox-title-txt">title</div>
+        <div className="ext-add-inputbox-title-txt">{title}</div>
         <div className="ext-add-inputbox-title-plus-wrapper">
           <div className="ext-add-inputbox-title-plus" onClick={addRow}>
             {plusBtn()}
