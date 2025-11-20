@@ -3,8 +3,79 @@
 - Button
 - Window
 - TextArea
+- TextAreaDropDown
+- AddBox
+    - useChangeAddBox.tsx
+    - css changes on vars can be done in parent class
+
+# Usage
+## AddBox
+
+AddBox is a React component for managing a list of entries. It allows users to add, edit, and remove rows dynamically. Each row has an id and a title.
+
+The component is fully controlled — the parent manages the state and receives updates via the onChange callback.
+
+
+
+
+### Implementation
+
+```tsx
+    import { useEffect, useState } from "react";
+    import { AddBox, useChangeAddBox } from "ehscan-react-components";
+
+    const Elements = () => {
+
+    const [inValue, setInValue] = useState({
+        add: [
+        { id: 0, title: "first Entry" },
+        { id: 1, title: "second Entry" },
+        { id: 2, title: "last Entry" }
+        ]
+    });
+
+    // Log changes whenever entries are updated
+    useEffect(() => {
+        console.log(inValue); 
+    }, [inValue]);
+
+    // Scoped change function for the "add" key
+    const changeAddBox = useChangeAddBox(inValue, setInValue, "add");
+
+    return (
+        <div className="element-wrapper">
+        <AddBox 
+            value={inValue.add} 
+            onChange={(value, id) => changeAddBox(value, id)} 
+        />
+        </div>
+    );
+    }
+
+    export default Elements;
+```
+
 
 # Styling
+
+- TextAreaDropDown
+
+| Variable                           | Fallback / Default                  |
+| ---------------------------------- | ----------------------------------- |
+| `--ext-textarea-box-bck-clr`       | `lightgray`                         |
+| `--ext-textarea-box-border-radius` | `10px`                              |
+| `--ext-dropdown-border-radius`     | `20px`                              |
+| `--input-txt-size`                 | *(not explicitly set, optional)*    |
+| `--d-font-weight`                  | *(not explicitly set, optional)*    |
+| `--input-clr`                      | `black`                             |
+| `--textarea-tag-bck-clr`           | `white` (some places `transparent`) |
+| `--textarea-tag-clr`               | `darkblue` (some places `white`)    |
+| `--d-input-placeholder-clr`        | `black`                             |
+| `--d-input-bck-clr`                | `transparent`                       |
+| `--dropdown-item-bck-clr`          | `wheat`                             |
+| `--dropdown-amount-row-bck-clr`    | `yellow`                            |
+| `--animate-s`                      | `.5s`                               |
+
 
 ## Base Button Variables
 
@@ -96,19 +167,3 @@
 
 All notable changes to this project will be documented in this file.
 ---
-
-
-## [1.0.5] - 2027-11-11
-### Fixed
-- Setter now supports functional update (like React’s setState)
-
-## [1.0.4] - 2027-10-22
-### Added
-- Added UseClickSetter
-  - Only Clicking purpose
-
-## [1.0.3] - 2025-10-22
-### Fixed
-- Optimized listener notifications:
-  - Only listeners subscribed to a changed or removed key are notified.
-  - Previously, all listeners were notified on every state change.
