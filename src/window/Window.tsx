@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
-import { useDraggable } from "./tools/useDraggable"; // adjust path as needed
-import './style/window.css'
+import { useDraggable } from "../tools/useDraggable"; // adjust path as needed
+import styles from './style/window.module.css'
 
 export interface Props {
     trackMove?: (args?: any) => void;
@@ -30,13 +30,12 @@ export const Window: React.FC<Props> = ({
     const resizeHandleRef = useRef<HTMLDivElement>(null);
     const bodyRef = useRef<HTMLDivElement>(null);
     const footerRef = useRef<HTMLDivElement>(null);
-    const [maxHeight] = useState("auto");
     const [bodyPadding] = useState(initialBodyPadding);
     const [windowWidth] = useState(initialWidth);
 
     useDraggable(open, targetRef, headerRef, bodyRef, resizeHandleRef, bodyPadding, trackMove);
 
-    useEffect(() => { //init
+    useEffect(() => { //init Window
         if (!bodyRef.current || !targetRef.current || !headerRef.current) return;
         const headerHeight = headerRef.current.offsetHeight;
         const topPosition = targetRef.current.getBoundingClientRect().top;
@@ -58,36 +57,31 @@ export const Window: React.FC<Props> = ({
     if (!open) return null;
 
     return (
-        <div ref={targetRef} className={`ext-window${fadeIn ? ' fadein' : ''}`} style={{ left: `${initialPosition.x}px`, top: `${initialPosition.y}px`, minWidth: `${windowWidth}px` }}>
+        <div ref={targetRef} className={`${styles.extWindow} ${fadeIn ? styles.fadeIn : ""}`}
+            style={{ left: `${initialPosition.x}px`, top: `${initialPosition.y}px`, minWidth: `${windowWidth}px` }}>
             {/* Header */}
-            <div ref={headerRef} className="ext-window-header">
+            <div ref={headerRef} className={styles.windowHeader}>
                 {header ?? (
                     <>
-                        <div className="ext-window-drag-handle">||</div>
-                        <div className="ext-window-header-title">Header</div>
+                        <div>||</div>
+                        <div>Header</div>
                         <div onClick={onClose}>close</div>
                     </>
                 )}
             </div>
-
             {/* Body */}
-            <div
-                ref={bodyRef}
-                className="ext-window-body _ewb"
-                style={{ padding: `${bodyPadding}px` }}
-            >
+            <div ref={bodyRef} className={styles.windowBody} style={{ padding: `${bodyPadding}px` }} >
                 {body ?? <>Body</>}
             </div>
 
             {/* Footer */}
             {footer && (
-                <div ref={footerRef} className="ext-window-footer">
+                <div ref={footerRef} className={styles.footer}>
                     {footer}
                 </div>
             )}
-
             {/* Resize handle */}
-            <div className="resize-handle" ref={resizeHandleRef} />
+            <div className={styles.resizeHandle} ref={resizeHandleRef} />
         </div>
     );
 }

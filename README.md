@@ -1,24 +1,100 @@
 # ehscan-react-components
 
-- Button
-- Window
-- TextArea
-- TextAreaDropDown
-- AddBox
-    - useChangeAddBox.tsx
-    - css changes on vars can be done in parent class
+A lightweight, modular collection of reusable React UI components designed for modern applications.
+All components are built with TypeScript, React, and Vite and css modules. Its focused on flexibility, performance, and ease of integration.
+This library is ideal for dashboards, admin panels, internal tools, and feature-rich web apps.
 
-# Usage
+## 📦 Available Components
+
+## Table of Contents
+- [Drag And Drop](#drag-and-drop)
+- [AddBox](#addbox)
+- [Window](#window)
+- Button
+- textarea
+- TextAreaDropDown
+
+## Installation
+
+```bash
+npm ehscan-react-components
+# or
+yarn add ehscan-react-components
+```
+
+# Usage Examples
+
+## Drag And Drop
+
+```jsx
+import { DragAndDrop } from 'ehscan-react-components';
+
+const DND = () => {
+
+    const [items, setItems] = useState([
+        { id: 1, label: "title" },
+        { id: 2, label: "description" },
+        { id: 3, label: "category" },
+        ...
+        { id: 10, label: "thumbnail" }
+    ]
+    );
+
+    const changeItemsAction = (colums) => {
+        console.log(colums)
+    };
+
+    return (<>
+    <div classname="dnd-css-inject">
+      <DragAndDrop items={items} setItems={setItems} changeItemsAction={changeItemsAction} />
+      </div>
+    </>) 
+} 
+
+```
+<!-- IMAGE -->
+
+### Styling
+```css
+/* Customize Drag & Drop component */
+.dnd-css-inject {
+  /* List Item */
+  --ext-dnd-item-bck-clr: darkblue;
+  --ext-dnd-item-border-radius: 4px;
+  --ext-dnd-item-padding: 10px;
+  --ext-dnd-item-clr: white;
+  --ext-dnd-item-height: 40px;
+
+  /* Selected Item */
+  --ext-dnd-item-selected-bck-clr: darkviolet;
+
+  /* Hovered Item */
+  --ext-dnd-item-selected-bck-hvr-clr: darkgreen;
+
+  /* Drag Handle */
+  --ext-dnd-item-handle-clr: #6c8cff;
+
+  /* SVG */
+  --ext-dnd-svg-width: 30px;
+  --ext-dnd-svg-height: 30px;
+  --ext-dnd-svg-fill: white;
+  --ext-dnd-svg-fill-check: lightslategrey;
+
+  /* Ghost Item (dragging) */
+  --ext-dnd-item-ghost-padding: 10px;
+  --ext-dnd-item-ghost-bck-clr: white;
+  --ext-dnd-item-ghost-border: 1px solid #6c8cff;
+  --ext-dnd-item-ghost-clr: lightslategrey;
+  --ext-dnd-item-ghost-border-radius: 6px;
+}
+```
+
 ## AddBox
 
 AddBox is a React component for managing a list of entries. It allows users to add, edit, and remove rows dynamically. Each row has an id and a title.
-
 The component is fully controlled — the parent manages the state and receives updates via the onChange callback.
 
 ![AddBox Preview](https://raw.githubusercontent.com/beeplaced/ehscan-react-components/main/src/images/AddBox.png)
-
-
-### Implementation
 
 ```jsx
 import { useEffect, useState } from "react";
@@ -85,7 +161,6 @@ CSS Variables for AddBox
 | `--tag-erase-h`                                 | `25px`                | Height of the row delete button                |
 | `--ext-addbox-textarea-tag-erase-hover-bck-clr` | `darkgray`            | Background color of the delete button on hover |
 | `--ext-addbox-input-focus-border`               | `1px dashed darkgrey` | Border of the input on focus                   |
-
 
 
 # Styling
@@ -172,30 +247,71 @@ CSS Variables for AddBox
 | `--btn-radius-trash`    | trashBtn | `4px`            |
 | `--btn-bg-trash`        | trashBtn | `lightgray`      |
 
-# Window
+## Window
+```jsx
+import { useEffect, useState } from "react";
+import { Window } from 'ehscan-react-components';
 
-## styling
+const WindowWrapper = ({ windowOpen, setWindowOpen }) => {
+    const [closeCommand, setCloseCommand] = useState(undefined);
 
-| Variable                             | Default                       | Description                        |
-| ------------------------------------ | ----------------------------- | ---------------------------------- |
-| `--ext-window-bck-color`             | `white`                       | Window background color            |
-| `--ext-window-width`                 | `400px`                       | Window default width               |
-| `--ext-window-min-height`            | `300px`                       | Window minimum height              |
-| `--ext-window-border-radius`         | `12px`                        | Window border radius               |
-| `--ext-window-shadow`                | `rgba(50,50,93,0.25) ...`   | Box shadow for window              |
-| `--ext-window-opacity`               | `0`                           | Initial opacity (used for fade-in) |
-| `--ext-window-transition`            | `opacity 0.4s ease-in-out`    | Fade transition                    |
-| `--ext-window-header-bck-color`      | `var(--ext-window-bck-color)` | Header background color            |
-| `--ext-window-close-bck`             | `aqua`                        | Close button background            |
-| `--ext-window-body-bck`              | `transparent`                 | Body background color              |
-| `--ext-window-footer-bck`            | `transparent`                 | Footer background color            |
-| `--ext-window-footer-min-height`     | `50px`                        | Footer min height                  |
-| `--ext-window-scrollbar-thumb`       | `white`                       | Scrollbar thumb color              |
-| `--ext-window-scrollbar-thumb-hover` | `#555`                        | Scrollbar thumb color on hover     |
-| `--ext-window-resize-bck`            | `darkgreen`                   | Resize handle background           |
+    return (<>
+        <div className="inject-window-css">
+            <Window trackMove={(entry) => setCloseCommand(entry)} open={windowOpen}
+                header={
+                    <div className="window-header">
+                        <div className="window-header-title _txt">My Window Header Title</div>
+                    </div>
+                }
+                body={
+                    <div className="window-body-wrapper">My Window Body</div>
+                }
+                footer={
+                    <div className="window-footer">My Window Footer</div>
+                }
+            />
+        </div>
+    </>)
+}
 
+```
+
+### Styling
+```css
+
+.inject-window-css {
+  /* Window container */
+  --ext-window-bck-color: white;
+  --ext-window-width: 400px;
+  --ext-window-min-height: 300px;
+  --ext-window-border-radius: 12px;
+  --ext-window-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  --ext-window-opacity: 0;
+  --ext-window-transition: opacity 0.4s ease-in-out;
+
+  /* Header */
+  --ext-window-header-bck-color: transparent;
+  --ext-window-header-height: 50px;
+
+  /* Body */
+  --ext-window-body-bck: transparent;
+
+  /* Footer */
+  --ext-window-footer-bck: transparent;
+  --ext-window-footer-height: 50px;
+
+  /* Scrollbars */
+  --ext-window-scrollbar-thumb: white;
+  --ext-window-scrollbar-thumb-hover: #555;
+
+  /* Resize handle */
+  --ext-window-resize-bck: darkgrey;
+}
+```
 ----
 # Changelog
 
-All notable changes to this project will be documented in this file.
+## [0.1.45] - 2025-12-11
+- Added Drag And Drop Component
+- Added Window css module and docu
 ---

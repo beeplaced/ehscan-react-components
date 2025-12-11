@@ -1,12 +1,4 @@
-/* 🪟 ExtWindow Base */
-.ext-window {
-  /* --ext-window-bck-color: white;
-  --ext-window-width: 400px;
-  --ext-window-min-height: 300px;
-  --ext-window-border-radius: 12px;
-  --ext-window-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  --ext-window-opacity: 0;
-  --ext-window-transition: opacity 0.4s ease-in-out; */
+.extWindow {
   background-color: var(--ext-window-bck-color, white);
   position: absolute;
   width: var(--ext-window-width, 400px);
@@ -18,12 +10,12 @@
   user-select: none;
 }
 
-.ext-window.fadein {
+.fadeIn {
   opacity: 1;
 }
 
 /* Header */
-.ext-window-header {
+.windowHeader {
   border-radius: var(--ext-window-border-radius, 12px) var(--ext-window-border-radius, 12px) 0 0;
   background-color: var(--ext-window-header-bck-color, transparent);
   height: var(--ext-window-header-height, 50px);
@@ -32,40 +24,40 @@
 }
 
 /* Body */
-.ext-window-body {
+.windowBody {
   background-color: var(--ext-window-body-bck, transparent);
   min-height: var(--ext-window-min-height, 200px);
   overflow: auto;
 }
 
 /* Footer */
-.ext-window-footer {
+.footer {
   background-color: var(--ext-window-footer-bck, transparent);
   height: var(--ext-window-footer-height, 50px);
   border-radius: 0 0 var(--ext-window-border-radius, 12px) var(--ext-window-border-radius, 12px);
 }
 
 /* Scrollbars for WebKit */
-._ewb::-webkit-scrollbar {
+.windowBody::-webkit-scrollbar {
   width: 6px;
   background-color: var(--ext-window-bck-color, white);
 }
 
-._ewb:hover::-webkit-scrollbar {
+.windowBody:hover::-webkit-scrollbar {
   width: 6px;
 }
 
-._ewb::-webkit-scrollbar-thumb {
+.windowBody::-webkit-scrollbar-thumb {
   background-color: var(--ext-window-scrollbar-thumb, white);
   border-radius: 12px;
 }
 
-._ewb:hover::-webkit-scrollbar-thumb {
+.windowBody:hover::-webkit-scrollbar-thumb {
   background-color: var(--ext-window-scrollbar-thumb-hover, #555);
 }
 
 /* Resize handle */
-.resize-handle {
+.resizeHandle {
     width: 7px;
     height: 120px;
     position: absolute;
@@ -77,6 +69,6 @@
     border-radius: 22px 0 0 22px;
 }
 
-.resize-handle:hover {
+.resizeHandle:hover {
     background: var(--ext-window-resize-bck, darkgrey);
 }
