@@ -98,6 +98,30 @@ const ButtonPage = () => {
 
 ## Drag And Drop
 
+A fully interactive drag-and-drop list component built with React that allows users to reorder items, select items, and handle autosave or custom callbacks.
+
+Features:
+
+- **Drag & drop reordering** 
+  - Users can click and drag any item in the list to reorder it.
+  - A “ghost” of the dragged item follows the cursor while dragging.
+  - Items swap positions when dropped, and the updated order is saved.
+- **Selection support**
+  - Clicking an item toggles its selected state.
+  - Selected items can be highlighted using a CSS class (styles.selected).
+- **Custom callbacks & autosave**
+  - setItems: Updates the parent state with the new item order.
+  - changeItemsAction: A callback fired whenever items are reordered or clicked.
+  - Debounced autosave: Changes are automatically saved with a delay (debounce) to reduce rapid API calls.
+- **Pop effect on drop**
+  - When an item is dropped into a new position, it briefly triggers a “pop” animation to indicate the change.
+- **Accessibility & flexibility**
+  - Works with any list of objects that have an id and label.
+  - Each item can optionally have a selected property.
+  - The component is fully type-safe with TypeScript.
+
+![DND Preview](https://raw.githubusercontent.com/beeplaced/ehscan-react-components/main/src/images/DND.png)
+
 ```jsx
 import { DragAndDrop } from 'ehscan-react-components';
 
@@ -234,91 +258,6 @@ CSS Variables for AddBox
 | `--ext-addbox-textarea-tag-erase-hover-bck-clr` | `darkgray`            | Background color of the delete button on hover |
 | `--ext-addbox-input-focus-border`               | `1px dashed darkgrey` | Border of the input on focus                   |
 
-
-# Styling
-
-- TextAreaDropDown
-
-| Variable                           | Fallback / Default                  |
-| ---------------------------------- | ----------------------------------- |
-| `--ext-textarea-box-bck-clr`       | `lightgray`                         |
-| `--ext-textarea-box-border-radius` | `10px`                              |
-| `--ext-dropdown-border-radius`     | `20px`                              |
-| `--input-txt-size`                 | *(not explicitly set, optional)*    |
-| `--d-font-weight`                  | *(not explicitly set, optional)*    |
-| `--input-clr`                      | `black`                             |
-| `--textarea-tag-bck-clr`           | `white` (some places `transparent`) |
-| `--textarea-tag-clr`               | `darkblue` (some places `white`)    |
-| `--d-input-placeholder-clr`        | `black`                             |
-| `--d-input-bck-clr`                | `transparent`                       |
-| `--dropdown-item-bck-clr`          | `wheat`                             |
-| `--dropdown-amount-row-bck-clr`    | `yellow`                            |
-| `--animate-s`                      | `.5s`                               |
-
-
-## Base Button Variables
-
-| Variable              | Default/Fallback                          |
-| --------------------- | ----------------------------------------- |
-| `--btn-bg`            | `#007aff`                                 |
-| `--btn-color`         | `#fff`                                    |
-| `--btn-radius`        | `18px`                                    |
-| `--btn-padding-y`     | `0.5rem`                                  |
-| `--btn-padding-x`     | `1rem`                                    |
-| `--btn-width`         | `fit-content`                             |
-| `--btn-height`        | `auto`                                    |
-| `--btn-font-size`     | `1rem`                                    |
-| `--btn-font-weight`   | `500`                                     |
-| `--btn-transition`    | `all 0.2s ease`                           |
-| `--btn-line-height`   | `1.5`                                     |
-| `--ripple-box-shadow` | `rgb(100 100 111 / 20%) 0px 7px 29px 0px` |
-| `--ripple-effect-bck` | `rgb(0 0 0 / 15%)`                        |
-
-
-### Size-specific overrides
-
-| Variable             | Size | Default/Fallback |
-| -------------------- | ---- | ---------------- |
-| `--btn-padding-y-sm` | sm   | `0.25rem`        |
-| `--btn-padding-x-sm` | sm   | `0.75rem`        |
-| `--btn-font-size-sm` | sm   | `0.85rem`        |
-| `--btn-padding-y-md` | md   | `0.5rem`         |
-| `--btn-padding-x-md` | md   | `1rem`           |
-| `--btn-font-size-md` | md   | `1rem`           |
-| `--btn-padding-y-lg` | lg   | `0.75rem`        |
-| `--btn-padding-x-lg` | lg   | `1.5rem`         |
-| `--btn-font-size-lg` | lg   | `1.1rem`         |
-
-### Variant-specific variables
-
-| Variable                | Variant   | Default/Fallback |
-| ----------------------- | --------- | ---------------- |
-| `--btn-bg-primary`      | primary   | `#007aff`        |
-| `--btn-color-primary`   | primary   | `#fff`           |
-| `--btn-bg-secondary`    | secondary | `#e5e5ea`        |
-| `--btn-color-secondary` | secondary | `#111`           |
-| `--btn-bg-outline`      | outline   | `transparent`    |
-| `--btn-color-outline`   | outline   | `#007aff`        |
-| `--btn-bg-ghost`        | ghost     | `transparent`    |
-| `--btn-color-ghost`     | ghost     | `#007aff`        |
-| `--btn-bg-danger`       | danger    | `#ff3b30`        |
-| `--btn-color-danger`    | danger    | `#fff`           |
-
-### Specific Button Types
-
-| Variable                | Type     | Default/Fallback |
-| ----------------------- | -------- | ---------------- |
-| `--btn-width-close`     | closeBtn | `35px`           |
-| `--btn-height-close`    | closeBtn | `35px`           |
-| `--btn-bg-close`        | closeBtn | `lightgray`      |
-| `--btn-height-save`     | saveBtn  | `35px`           |
-| `--btn-padding-x-save`  | saveBtn  | `30px`           |
-| `--btn-bg-save`         | saveBtn  | `#007aff`        |
-| `--btn-height-trash`    | trashBtn | `35px`           |
-| `--btn-padding-x-trash` | trashBtn | `10px`           |
-| `--btn-radius-trash`    | trashBtn | `4px`            |
-| `--btn-bg-trash`        | trashBtn | `lightgray`      |
-
 ## Window
 ```jsx
 import { useEffect, useState } from "react";
@@ -382,6 +321,10 @@ const WindowWrapper = ({ windowOpen, setWindowOpen }) => {
 ```
 ----
 # Changelog
+
+## [0.1.49] - 2025-12-12
+- Image and docu for Drag and Drop
+
 ## [0.1.48] - 2025-12-12
 - Improved Button, module styling and docu, mobile usage (type: "pop")
 - Ripple module styling
