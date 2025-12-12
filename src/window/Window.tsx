@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useDraggable } from "../tools/useDraggable"; // adjust path as needed
-import styles from './style/window.module.css'
+import styles from '../style/window.module.css'
 
 export interface Props {
     trackMove?: (args?: any) => void;

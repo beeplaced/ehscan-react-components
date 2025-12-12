@@ -1,12 +1,12 @@
 {
   "name": "ehscan-react-components",
-  "version": "0.1.46",
+  "version": "0.1.48",
   "description": "components",
   "main": "dist/Components.js",
   "types": "dist/Components.d.ts",
   "scripts": {
     "build": "tsc && npm run copy-css",
-"copy-css": "rsync -a src/style/ dist/style/",
+    "copy-css": "rsync -a src/style/ dist/style/",
     "prepublishOnly": "npm run build"
   },
   "keywords": [

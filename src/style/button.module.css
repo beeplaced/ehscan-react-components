@@ -1,0 +1,100 @@
+/* EHSCAN Base Button */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ext-btn-gap, 0.5rem);
+  font-family: inherit;
+  font-size: var(--ext-btn-font-size, 1rem);
+  font-weight: var(--ext-btn-font-weight, 500);
+  color: var(--ext-btn-color, #fff);
+  background-color: var(--btn-bg, #007aff);
+  border: none;
+  border-radius: var(--ext-btn-radius, 18px);
+  padding: var(--ext-btn-padding, 5px 10px 5px 5px);
+  width: var(--ext-btn-width, fit-content);
+  height: var(--ext-btn-height, auto);
+  cursor: pointer;
+  transition: var(--ext-btn-transition, all 0.2s ease);
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  line-height: var(--ext-btn-colorbtn-line-height, 1.5);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--ext-btn-bg, #007aff);
+  outline-offset: 2px;
+}
+
+.button:disabled,
+.button[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button:hover:not(:disabled):not([aria-disabled="true"]) {
+  filter: brightness(0.9);
+}
+
+.buttonPop:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: scale(var(--ext-btn-pop-scale, .95));
+}
+
+/* Variants */
+.btnPrimary {
+  --ext-btn-bg: #007aff;
+  --ext-btn-color: #fff;
+}
+
+.ext-btn--secondary {
+  --btn-bg: #e5e5ea;
+  --btn-color: #111;
+}
+
+.ext-btn--outline {
+  --btn-bg: transparent;
+  --btn-color: #007aff;
+}
+
+.ext-btn--ghost {
+  --btn-bg: transparent;
+  --btn-color: #007aff;
+}
+
+.ext-btn--danger {
+  --btn-bg: #ff3b30;
+  --btn-color: #fff;
+}
+
+/* Loading state */
+.ext-btn--loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Icon and label wrappers */
+.ext-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1em;
+}
+
+.btnLabel {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* -------------- 
+  Apply Ripple effect 
+---------------*/
+.ApplyRipple {
+  box-shadow: var(--ripple-box-shadow, rgb(100 100 111 / 20%) 0px 7px 29px 0px);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}

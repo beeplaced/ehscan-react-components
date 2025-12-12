@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import useRipple from '../tools/useRipple';
 import styles from '../style/dnd.module.css';
 
 type Props = {

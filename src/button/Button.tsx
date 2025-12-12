@@ -1,6 +1,6 @@
 import { useRef, useCallback, ReactNode } from "react";
-import useRipple from "./tools/useRipple";
-import './style/button.css'
+import useRipple from "../tools/useRipple";
+import styles from '../style/button.module.css'
 
 type Props = {
   index?: string | number;
@@ -8,25 +8,23 @@ type Props = {
   selected?: boolean;
   addClass?: string;
   notimeout?: boolean;
-  size?: 'sm' | 'md' | 'lg';
   click?: (args?: any) => void;
-  children?: ReactNode; //icon
+  type?: "raw" | "pop" | "ripple";
+  children?: ReactNode; //icon or else
 };
 
-export const Button: React.FC<Props> = ({ index, text, selected, addClass, notimeout, size = 'md', click, children }) => {
+export const Button: React.FC<Props> = ({ index, text, selected, addClass, notimeout, click, type = "raw", children }) => {
 
   const buttonRef = useRef(null);
   const handleRipple = useRipple();
 
   const handleButtonClick = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
-      handleRipple(event, buttonRef as unknown as React.RefObject<HTMLElement>);
-
+      if (type === 'ripple') handleRipple(event, buttonRef as unknown as React.RefObject<HTMLElement>);
       if (notimeout) {
         click?.(event);
         return;
       }
-      
       setTimeout(() => {
         click?.(event);
       }, 200);
@@ -40,10 +38,10 @@ export const Button: React.FC<Props> = ({ index, text, selected, addClass, notim
       type="button"
       ref={buttonRef}
       onClick={handleButtonClick}
-      className={`ext-btn ext-btn--${size} _ripple ${addClass ?? 'ext-btn--primary'}`}
+      className={`${styles.button} ${styles.ApplyRipple} ${addClass ?? styles.btnPrimary}${type === 'pop' ? ` ${styles.buttonPop}` : ''}`}
       aria-pressed={selected} >
       {children}
-      {text && <div className="ext-btn-label">{text}</div>}
+      {text && <div className={styles.btnLabel}>{text}</div>}
     </button>
   </>)
 }
