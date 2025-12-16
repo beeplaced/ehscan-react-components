@@ -1,6 +1,6 @@
 {
   "name": "ehscan-react-components",
-  "version": "0.1.53",
+  "version": "0.1.54",
   "description": "components",
   "main": "dist/Components.js",
   "types": "dist/Components.d.ts",

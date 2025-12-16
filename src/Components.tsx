@@ -5,5 +5,6 @@ export { DragAndDrop } from './dnd/DragAndDrop';
 export { TextArea } from './text/TextArea';
 export { TextElementStretch } from './text/TextElementStretch';
 export { TextAreaDropDown } from './text/TextAreaDropDown';
+export { FoldedElement } from './text/FoldedElement';
 export { AddBox } from './AddBox';
 export { useChangeAddBox } from './tools/useChangeAddBox';
