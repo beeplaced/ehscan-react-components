@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState, useCallback, useId } from "react";
-import '../style/input.css'
+import styles from '../style/textarea.module.css'
 
 interface Props {
   id?: string;
@@ -17,10 +17,9 @@ interface Props {
 export const TextArea: React.FC<Props> = ({ id, tabIndex, label, value, editable = true, required = false, onChange, placeholder, maxLength = 500, addClass }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [charCount, setCharCount] = useState(value.length);
-  const generatedId = useId(); // unique fallback for aria linking
+  const generatedId = useId();
   const textareaId = id || `textarea-${generatedId}`;
 
-  // 🔧 Resize and update char count whenever value changes
   useLayoutEffect(() => {
     setHeight();
     setCharCount(value.length);
@@ -61,24 +60,22 @@ export const TextArea: React.FC<Props> = ({ id, tabIndex, label, value, editable
   }, [onChange]);
 
   return (
-    <div className={`ext-textarea-wrapper ${addClass}`}>
-      {/* Label Area */}
+    <div className={`${styles.extTextareaWrapper} ${addClass}`}>
       {label && (
-        <div className="ext-textarea-label">
-          <label className="ext-textarea-label-title" htmlFor={textareaId}>
-            {label} {required && <span className="required">*</span>}
+        <div className={styles.extTextareaLable}>
+          <label className={styles.extTextareaLableTitle} htmlFor={textareaId}>
+            {label} {required && <span>*</span>}
           </label>
-          <div className="ext-textarea-label-btns">
+          <div className={styles.extTextareaLableBtns}>
             {editable && charCount > 0 && (
-              <div className="form-container-count">
+              <div className={styles.formContainerCount}>
                 {charCount} / {maxLength}
               </div>
             )}
             {editable && charCount > 0 && (
-              <div className="ext-textarea-svg-close" onClick={clear} aria-label={`Clear ${label ?? "text area"}`}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                  <line x1="8" y1="8" x2="16" y2="16" stroke="#333" strokeWidth="2" strokeLinecap="round" />
-                  <line x1="16" y1="8" x2="8" y2="16" stroke="#333" strokeWidth="2" strokeLinecap="round" />
+              <div className={styles.extTextareaLableSvgClose} onClick={clear} aria-label={`Clear ${label ?? "text area"}`}>
+                <svg width="24" height="24" fill="none" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path className={styles.extTextareaLableSvgClosePath} d="m18.017 5.2673-6.0173 6.0173-6.0173-6.0173-0.71539 0.71539 6.0173 6.0173-6.0173 6.0173 0.71539 0.71539 6.0173-6.0173 6.0173 6.0173 0.71539-0.71539-6.0173-6.0173 6.0173-6.0173z" fill="#000" />
                 </svg>
               </div>
             )}
@@ -86,8 +83,7 @@ export const TextArea: React.FC<Props> = ({ id, tabIndex, label, value, editable
         </div>
       )}
 
-      {/* Textarea Box */}
-      <div className="ext-textarea-box">
+      <div className={styles.textareaBox}>
         <textarea
           id={textareaId}
           tabIndex={tabIndex}
@@ -98,7 +94,7 @@ export const TextArea: React.FC<Props> = ({ id, tabIndex, label, value, editable
           onChange={handleInputChange}
           onFocus={handleFocus}
           onBlur={setHeight}
-          className={`ext-textarea${required && value === "" ? " highlight" : ""}`}
+          className={`${styles.extTextarea} ${required && value === "" ? styles.highlight : ""}`}
           rows={1}
           spellCheck={false}
           readOnly={!editable}

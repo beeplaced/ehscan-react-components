@@ -327,6 +327,8 @@ const WindowWrapper = ({ windowOpen, setWindowOpen }) => {
 ----
 # Changelog
 
+## [0.1.54] - 2025-12-16
+- Textarea module.css
 
 ## [0.1.53] - 2025-12-16
 - Added FoldedElement
