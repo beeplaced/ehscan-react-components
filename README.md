@@ -11,10 +11,14 @@ This library is ideal for dashboards, admin panels, internal tools, and feature-
 - [Drag And Drop](#drag-and-drop)
 - [AddBox](#addbox)
 - [Window](#window)
-- Button
-- textarea
-- TextAreaDropDown
-- TextElementStretch
+
+- Input
+  - textarea
+  - TextAreaDropDown
+
+- Text or Content Elements
+  - TextElementStretch
+  - FoldedElement
 
 ## Installation
 
@@ -322,6 +326,10 @@ const WindowWrapper = ({ windowOpen, setWindowOpen }) => {
 ```
 ----
 # Changelog
+
+
+## [0.1.53] - 2025-12-16
+- Added FoldedElement
 
 ## [0.1.51] - 2025-12-16
 - Added TextElementStretch

@@ -1,6 +1,6 @@
 {
   "name": "ehscan-react-components",
-  "version": "0.1.52",
+  "version": "0.1.53",
   "description": "components",
   "main": "dist/Components.js",
   "types": "dist/Components.d.ts",
@@ -31,5 +31,8 @@
     "glob": "8",
     "minimatch": "5",
     "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.26"
   }
 }
