@@ -322,6 +322,9 @@ const WindowWrapper = ({ windowOpen, setWindowOpen }) => {
 ----
 # Changelog
 
+## [0.1.50] - 2025-12-16
+- Button default style adjustments
+
 ## [0.1.49] - 2025-12-12
 - Image and docu for Drag and Drop
 

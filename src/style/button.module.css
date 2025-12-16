@@ -3,15 +3,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--ext-btn-gap, 0.5rem);
+  gap: var(--ext-btn-gap, 0);
   font-family: inherit;
   font-size: var(--ext-btn-font-size, 1rem);
   font-weight: var(--ext-btn-font-weight, 500);
   color: var(--ext-btn-color, #fff);
-  background-color: var(--btn-bg, #007aff);
+  background-color: var(--ext-btn-bg, #007aff);
   border: none;
-  border-radius: var(--ext-btn-radius, 18px);
-  padding: var(--ext-btn-padding, 5px 10px 5px 5px);
+  border-radius: var(--ext-btn-radius, 12px);
+  padding: var(--ext-btn-padding, 5px);
   width: var(--ext-btn-width, fit-content);
   height: var(--ext-btn-height, auto);
   cursor: pointer;
@@ -90,7 +90,7 @@
   Apply Ripple effect 
 ---------------*/
 .ApplyRipple {
-  box-shadow: var(--ripple-box-shadow, rgb(100 100 111 / 20%) 0px 7px 29px 0px);
+  box-shadow: var(--ext-btn-ripple-box-shadow, none); /* rgb(100 100 111 / 20%) 0px 7px 29px 0px */
   position: relative;
   overflow: hidden;
   display: flex;
