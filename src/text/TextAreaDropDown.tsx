@@ -1,5 +1,5 @@
 import { useRef, useState, useId, useEffect } from "react";
-import { DropDownHandle, DropDown } from "./DropDown";
+import { DropDownHandle, DropDown } from "../DropDown";
 import './style/input-dropdown.css'
 
 type Action = "add" | "remove";

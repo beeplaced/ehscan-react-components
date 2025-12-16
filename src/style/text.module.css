@@ -1,0 +1,10 @@
+.textElementStretch{
+    flex: 1;
+    font-size: 100%;
+    line-height: var(--ext-text-stretch-line-height, 1);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--ext-text-stretch-clamp, 1);
+    line-clamp: var(--ext-text-stretch-clamp, 1);
+    overflow: hidden;
+}

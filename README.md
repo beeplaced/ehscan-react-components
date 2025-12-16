@@ -14,6 +14,7 @@ This library is ideal for dashboards, admin panels, internal tools, and feature-
 - Button
 - textarea
 - TextAreaDropDown
+- TextElementStretch
 
 ## Installation
 
@@ -321,6 +322,9 @@ const WindowWrapper = ({ windowOpen, setWindowOpen }) => {
 ```
 ----
 # Changelog
+
+## [0.1.51] - 2025-12-16
+- Added TextElementStretch
 
 ## [0.1.50] - 2025-12-16
 - Button default style adjustments
