@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState, useCallback, useId } from "react";
-import './style/input.css'
+import '../style/input.css'
 
 interface Props {
   id?: string;
