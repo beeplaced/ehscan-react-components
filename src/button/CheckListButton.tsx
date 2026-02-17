@@ -1,5 +1,5 @@
 import React, { useState, MouseEvent, CSSProperties } from "react";
-import styles from "./style/checklistbutton.module.css";
+import styles from "../style/checklistbutton.module.css";
 
 interface Props {
     children: React.ReactNode;

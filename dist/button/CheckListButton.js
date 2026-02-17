@@ -1,6 +1,6 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { useState } from "react";
-import styles from "./style/checklistbutton.module.css";
+import styles from "../style/checklistbutton.module.css";
 export const CheckListButton = ({ children, selected = false, disabled, baseColor, onClick }) => {
     const [pressed, setPressed] = useState(false);
     const handleMouseDown = () => setPressed(true);
