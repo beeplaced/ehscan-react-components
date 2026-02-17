@@ -6,14 +6,14 @@ type Props = {
   index?: string | number;
   text?: string;
   selected?: boolean;
-  addClass?: string;
+  injectCSS?: string;
   notimeout?: boolean;
   click?: (args?: any) => void;
   type?: "raw" | "pop" | "ripple";
   children?: ReactNode; //icon or else
 };
 
-export const Button: React.FC<Props> = ({ index, text, selected, addClass, notimeout, click, type = "raw", children }) => {
+export const Button: React.FC<Props> = ({ index, text, selected, injectCSS, notimeout, click, type = "raw", children }) => {
 
   const buttonRef = useRef(null);
   const handleRipple = useRipple();
@@ -38,7 +38,7 @@ export const Button: React.FC<Props> = ({ index, text, selected, addClass, notim
       type="button"
       ref={buttonRef}
       onClick={handleButtonClick}
-      className={`${styles.button} ${styles.ApplyRipple} ${addClass ?? styles.btnPrimary}${type === 'pop' ? ` ${styles.buttonPop}` : ''}`}
+      className={`${styles.button} ${styles.ApplyRipple} ${injectCSS ?? styles.btnPrimary}${type === 'pop' ? ` ${styles.buttonPop}` : ''}`}
       aria-pressed={selected} >
       {children}
       {text && <div className={styles.btnLabel}>{text}</div>}

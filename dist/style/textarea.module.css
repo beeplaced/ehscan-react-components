@@ -1,0 +1,102 @@
+.extTextareaWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--ext-textarea-gap, 10px);
+    padding: var(--ext-textarea-padding, 5px);
+}
+
+.extTextareaLable {
+    display: flex;
+    flex-direction: row;
+}
+
+.extTextareaLableTitle {
+    flex: 1;
+}
+
+.ext-textarea-lable-btn {
+    background-color: aquamarine;
+    display: flex;
+    gap: 10px;
+}
+
+.extTextareaLableBtns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ext-textarea-btn-gap, 5px);
+    padding: var(--ext-textarea-btn-padding, 0);
+    line-height: var(--ext-textarea-btn-line-height, 0);
+}
+
+.formContainerCount {
+    font-size: var(--ext-textarea-font-size, 0.7rem);
+    font-weight: var(--ext-textarea-font-weigth, 300);
+    ;
+    color: var(--ext-textarea-count-clr, #666);
+}
+
+.extTextareaLableSvgClose {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.extTextareaLableSvgClose>svg {
+    width: var(--ext-textarea-svg-w, 20px);
+    height: var(--ext-textarea-svg-h, 20px);
+    display: flex;
+}
+
+.extTextareaLableSvgClosePath {
+    fill: var(--ext-textarea-svg-path, #666);
+}
+
+.textareaBox {
+    width: 100%;
+    background-color: var(--ext-textarea-box-bck-clr, lightgray);
+    border-radius: var(--ext-textarea-box-border-radius, 10px);
+    display: flex;
+    position: relative;
+}
+
+.extTextarea {
+    font-size: var(--ext-textarea-input-txt-size, 14px);
+    background-color: transparent;
+    color: var(--ext-textarea-input-clr, red);
+    caret-color: var(--ext-textarea-input-caret-clr, blue);
+    font-weight: var(--ext-textarea-d-font-weight, 400);
+    border-radius: var(--ext-textarea-box-border-radius, 10px);
+    border: none;
+    outline: none;
+    width: 100%;
+    display: grid;
+    justify-content: left;
+    align-items: center;
+    box-sizing: border-box;
+    resize: none;
+    overflow: hidden;
+    padding: 10px;
+    line-height: 1.5;
+}
+
+.extTextarea::placeholder {
+    color: var(--ext-textarea-input-placeholder-clr, green);
+    opacity: 1;
+}
+
+.extTextarea:focus {
+    background-color: var(--ext-textarea-focus-bck-clr, lavender);
+}
+
+.highlight {
+    border: var(--ext-textarea-highlight-border, 2px dashed red);
+    outline: none;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.highlight:focus {
+    box-shadow: 0 0 3px rgba(74, 144, 226, 0.6);
+}

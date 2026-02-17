@@ -1,0 +1,44 @@
+/* Base button style */
+.button {
+    --outline-scale: var(--ext-outline-scale, 5px);
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --intensity: 1;
+    background-color: rgba(var(--base-color), var(--intensity));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Hover: slightly lighter background */
+.activeBtn:hover {
+    --intensity: var(--ext-hover-intensity, .7);
+}
+
+.disabled {
+    opacity: var(--ext-disabled-opacity, .2);
+}
+
+/* Pressed: scale down */
+.activeBtn:active {
+    transform: scale(0.95);
+}
+
+/* Selected state: border remains 30% opacity */
+.selected {
+    outline: var(--outline-scale) solid rgba(var(--base-color), 0.3);
+    outline-offset: 0;
+    border: none;
+
+}

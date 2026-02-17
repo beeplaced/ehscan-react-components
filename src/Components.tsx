@@ -1,5 +1,6 @@
 // ehscan-react-components entries
 export { Button } from './button/Button';
+export { CheckListButton } from './button/CheckListButton';
 export { Window } from './window/Window';
 export { DragAndDrop } from './dnd/DragAndDrop';
 export { TextArea } from './text/TextArea';
